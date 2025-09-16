@@ -3,11 +3,17 @@ import CoreGraphics
 struct OCRResult {
     let text: String
     let engine: OCREngine
+    let detectionType: DetectionType
 }
 
 enum OCREngine {
     case vision
     case tesseract
+}
+
+enum DetectionType {
+    case text
+    case qrCode
 }
 
 protocol OCRServicing {
@@ -26,8 +32,8 @@ final class OCRService: OCRServicing {
     func recognizeText(in image: CGImage, language: OCRLanguage, completion: @escaping (Result<OCRResult, Error>) -> Void) {
         visionService.recognize(image: image, language: language) { [weak self] result in
             switch result {
-            case let .success(text):
-                completion(.success(OCRResult(text: text, engine: .vision)))
+            case let .success(result):
+                completion(.success(result))
             case let .failure(error):
                 self?.attemptFallback(image: image, language: language, primaryError: error, completion: completion)
             }
@@ -43,7 +49,7 @@ final class OCRService: OCRServicing {
         tesseractService.recognize(image: image, language: language) { fallbackResult in
             switch fallbackResult {
             case let .success(text):
-                completion(.success(OCRResult(text: text, engine: .tesseract)))
+                completion(.success(OCRResult(text: text, engine: .tesseract, detectionType: .text)))
             case let .failure(fallbackError):
                 completion(.failure(OCRFailure.primaryAndFallbackFailed(primary: primaryError, fallback: fallbackError)))
             }

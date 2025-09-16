@@ -47,7 +47,8 @@ final class SnapTextAppDelegate: NSObject, NSApplicationDelegate {
                 switch result {
                 case let .success(ocrResult):
                     self.clipboardManager.copy(ocrResult.text)
-                    self.toastPresenter.show(message: "Copied to Clipboard")
+                    let message = ocrResult.detectionType == .qrCode ? "QR Code Copied to Clipboard" : "Copied to Clipboard"
+                    self.toastPresenter.show(message: message)
                 case let .failure(error):
                     switch error {
                     case .cancelled:
