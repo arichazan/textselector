@@ -12,6 +12,7 @@ final class SnapTextAppDelegate: NSObject, NSApplicationDelegate {
     private let hotkeyManager = GlobalHotkeyManager.shared
 
     private var preferencesWindow: NSWindow?
+    private var resultWindow: NSWindow?
 
     private var cancellables: Set<AnyCancellable> = []
 
@@ -46,17 +47,7 @@ final class SnapTextAppDelegate: NSObject, NSApplicationDelegate {
             self.captureController.beginCapture { result in
                 switch result {
                 case let .success(ocrResult):
-                    self.clipboardManager.copy(ocrResult.text)
-                    let message: String
-                    switch ocrResult.detectionType {
-                    case .qrCode:
-                        message = "QR Code Copied to Clipboard"
-                    case .barcode:
-                        message = "Barcode Copied to Clipboard"
-                    case .text:
-                        message = "Copied to Clipboard"
-                    }
-                    self.toastPresenter.show(message: message)
+                    self.showCaptureResult(ocrResult)
                 case let .failure(error):
                     switch error {
                     case .cancelled:
@@ -104,6 +95,54 @@ final class SnapTextAppDelegate: NSObject, NSApplicationDelegate {
         }
 
         preferencesWindow?.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
+    }
+
+    private func showCaptureResult(_ result: OCRResult) {
+        // Close existing window if any
+        resultWindow?.close()
+        resultWindow = nil
+
+        let resultView = CaptureResultView(result: result) { [weak self] in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+
+                // Close window first
+                self.resultWindow?.close()
+                self.resultWindow = nil
+
+                // Copy to clipboard
+                self.clipboardManager.copy(result.text)
+
+                // Show toast message
+                let message: String
+                switch result.detectionType {
+                case .qrCode:
+                    message = "QR Code Copied to Clipboard"
+                case .barcode:
+                    message = "Barcode Copied to Clipboard"
+                case .text:
+                    message = "Copied to Clipboard"
+                }
+                self.toastPresenter.show(message: message)
+            }
+        }
+
+        let hostingView = NSHostingView(rootView: resultView)
+
+        resultWindow = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 400, height: 300),
+            styleMask: [.titled, .closable],
+            backing: .buffered,
+            defer: false
+        )
+        resultWindow?.title = "Capture Result"
+        resultWindow?.contentView = hostingView
+        resultWindow?.center()
+        resultWindow?.level = .floating
+        resultWindow?.isReleasedWhenClosed = false
+        resultWindow?.makeKeyAndOrderFront(nil)
+
         NSApp.activate(ignoringOtherApps: true)
     }
 }
