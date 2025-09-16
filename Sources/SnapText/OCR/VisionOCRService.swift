@@ -6,11 +6,11 @@ final class VisionOCRService {
 
     func recognize(image: CGImage, language: OCRLanguage, completion: @escaping (Result<OCRResult, Error>) -> Void) {
         queue.async { [weak self] in
-            self?.detectQRCode(image: image) { qrResult in
-                switch qrResult {
-                case let .success(qrText):
+            self?.detectBarcode(image: image) { barcodeResult in
+                switch barcodeResult {
+                case let .success(result):
                     DispatchQueue.main.async {
-                        completion(.success(OCRResult(text: qrText, engine: .vision, detectionType: .qrCode)))
+                        completion(.success(result))
                     }
                 case .failure:
                     self?.recognizeText(image: image, language: language, completion: completion)
@@ -19,7 +19,7 @@ final class VisionOCRService {
         }
     }
 
-    private func detectQRCode(image: CGImage, completion: @escaping (Result<String, Error>) -> Void) {
+    private func detectBarcode(image: CGImage, completion: @escaping (Result<OCRResult, Error>) -> Void) {
         let request = VNDetectBarcodesRequest { request, error in
             if let error = error {
                 completion(.failure(error))
@@ -27,18 +27,20 @@ final class VisionOCRService {
             }
 
             guard let results = request.results as? [VNBarcodeObservation] else {
-                completion(.failure(OCRProcessingError.noQRCodeFound))
+                completion(.failure(OCRProcessingError.noBarcodeFound))
                 return
             }
 
             for barcode in results {
-                if barcode.symbology == .QR, let payloadString = barcode.payloadStringValue {
-                    completion(.success(payloadString))
+                if let payloadString = barcode.payloadStringValue {
+                    let detectionType: DetectionType = barcode.symbology == .QR ? .qrCode : .barcode
+                    let result = OCRResult(text: payloadString, engine: .vision, detectionType: detectionType)
+                    completion(.success(result))
                     return
                 }
             }
 
-            completion(.failure(OCRProcessingError.noQRCodeFound))
+            completion(.failure(OCRProcessingError.noBarcodeFound))
         }
 
         let handler = VNImageRequestHandler(cgImage: image, options: [:])
@@ -92,5 +94,5 @@ final class VisionOCRService {
 
 enum OCRProcessingError: Error {
     case noTextFound
-    case noQRCodeFound
+    case noBarcodeFound
 }

@@ -14,6 +14,7 @@ enum OCREngine {
 enum DetectionType {
     case text
     case qrCode
+    case barcode
 }
 
 protocol OCRServicing {
