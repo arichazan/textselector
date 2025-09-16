@@ -23,6 +23,7 @@ Sources/
     Settings/           // User defaults-backed settings model
     UI/                 // Toast presenter, hotkey recorder, reusable views
     Utilities/          // Login item manager, NSScreen helpers
+    Resources/          // Info.plist for the menu bar app bundle
 prd.md
 planning.md
 ```
