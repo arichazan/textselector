@@ -11,7 +11,7 @@ final class LoginItemManager: LoginItemManaging {
             if enabled {
                 try SMAppService.mainApp.register()
             } else {
-                SMAppService.mainApp.unregister()
+                try SMAppService.mainApp.unregister()
             }
         } catch {
             NSLog("Failed to update login item: \(error.localizedDescription)")

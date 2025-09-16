@@ -23,7 +23,7 @@ final class GlobalHotkeyManager {
         unregister()
         callback = handler
 
-        var hotKeyID = EventHotKeyID(signature: OSType(UInt32("SNAP".fourCharCodeValue)), id: 1)
+        let hotKeyID = EventHotKeyID(signature: OSType(UInt32("SNAP".fourCharCodeValue)), id: 1)
         let status = RegisterEventHotKey(
             configuration.keyCode,
             configuration.modifierFlags.carbonFlags,

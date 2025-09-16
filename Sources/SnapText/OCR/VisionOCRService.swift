@@ -32,7 +32,6 @@ final class VisionOCRService {
             }
 
             request.recognitionLanguages = [language.visionRecognitionLanguage]
-            request.usesCPUOnly = false
             request.recognitionLevel = .accurate
             request.usesLanguageCorrection = false
 

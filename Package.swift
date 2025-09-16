@@ -12,10 +12,7 @@ let package = Package(
     targets: [
         .executableTarget(
             name: "SnapText",
-            path: "Sources/SnapText",
-            resources: [
-                .process("Resources")
-            ]
+            path: "Sources/SnapText"
         )
     ]
 )

@@ -1,5 +1,6 @@
 import AppKit
 import Combine
+import SwiftUI
 
 final class SnapTextAppDelegate: NSObject, NSApplicationDelegate {
     private let settings = UserSettings.shared
@@ -10,6 +11,8 @@ final class SnapTextAppDelegate: NSObject, NSApplicationDelegate {
     private lazy var permissionManager = ScreenPermissionManager()
     private let hotkeyManager = GlobalHotkeyManager.shared
 
+    private var preferencesWindow: NSWindow?
+
     private var cancellables: Set<AnyCancellable> = []
 
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -17,8 +20,8 @@ final class SnapTextAppDelegate: NSObject, NSApplicationDelegate {
         statusItemController.onCaptureRequested = { [weak self] in
             self?.startCapture()
         }
-        statusItemController.onPreferencesRequested = {
-            NSApp.sendAction(#selector(NSApplication.showSettingsWindow(_:)), to: nil, from: nil)
+        statusItemController.onPreferencesRequested = { [weak self] in
+            self?.showPreferences()
         }
         statusItemController.onQuitRequested = {
             NSApp.terminate(nil)
@@ -72,5 +75,26 @@ final class SnapTextAppDelegate: NSObject, NSApplicationDelegate {
                 self?.registerHotkey(configuration)
             }
             .store(in: &cancellables)
+    }
+
+    private func showPreferences() {
+        if preferencesWindow == nil {
+            let preferencesView = PreferencesView(viewModel: PreferencesViewModel(settings: settings))
+            let hostingView = NSHostingView(rootView: preferencesView)
+
+            preferencesWindow = NSWindow(
+                contentRect: NSRect(x: 0, y: 0, width: 420, height: 320),
+                styleMask: [.titled, .closable, .miniaturizable],
+                backing: .buffered,
+                defer: false
+            )
+            preferencesWindow?.title = "SnapText Preferences"
+            preferencesWindow?.contentView = hostingView
+            preferencesWindow?.center()
+            preferencesWindow?.setFrameAutosaveName("PreferencesWindow")
+        }
+
+        preferencesWindow?.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
     }
 }

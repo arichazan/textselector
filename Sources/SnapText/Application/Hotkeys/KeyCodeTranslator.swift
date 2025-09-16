@@ -1,4 +1,5 @@
 import AppKit
+import Carbon
 
 enum KeyCodeTranslator {
     static func displayName(for keyCode: UInt32) -> String {

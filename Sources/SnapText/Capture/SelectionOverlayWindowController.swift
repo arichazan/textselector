@@ -41,19 +41,19 @@ final class SelectionOverlayWindowController {
     }
 
     private func installMonitors() {
-        if let keyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
+        if let keyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown, handler: { [weak self] event in
             if event.keyCode == 53 { // escape key
                 self?.finish(with: .cancelled)
                 return nil
             }
             return event
-        } {
+        }) {
             monitors.append(keyMonitor)
         }
 
-        if let globalRightClickMonitor = NSEvent.addGlobalMonitorForEvents(matching: .rightMouseDown) { [weak self] _ in
+        if let globalRightClickMonitor = NSEvent.addGlobalMonitorForEvents(matching: .rightMouseDown, handler: { [weak self] _ in
             self?.finish(with: .cancelled)
-        } {
+        }) {
             monitors.append(globalRightClickMonitor)
         }
     }
@@ -73,7 +73,12 @@ final class SelectionOverlayWindowController {
 
 private final class SelectionOverlayWindow: NSWindow {
     init(screen: NSScreen) {
-        super.init(contentRect: screen.frame, styleMask: .borderless, backing: .buffered, defer: false, screen: screen)
+        super.init(
+            contentRect: screen.frame,
+            styleMask: .borderless,
+            backing: .buffered,
+            defer: false
+        )
         isReleasedWhenClosed = false
         ignoresMouseEvents = false
         backgroundColor = .clear
@@ -111,7 +116,8 @@ private final class SelectionOverlayView: NSView {
         dirtyRect.fill()
 
         if let selectionRect {
-            NSBezierPath(rect: selectionRect).fill(with: .clear, alpha: 1.0)
+NSColor.clear.setFill()
+            NSBezierPath(rect: selectionRect).fill()
             let path = NSBezierPath(rect: selectionRect)
             path.lineWidth = 2
             NSColor.white.setStroke()
