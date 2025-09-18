@@ -178,6 +178,13 @@ private final class SelectionOverlayView: NSView {
         super.draw(dirtyRect)
 
         if let selectionRect {
+            // Create the overlay effect: darken everything except the selection
+            let overlayPath = NSBezierPath(rect: bounds)
+            overlayPath.append(NSBezierPath(rect: selectionRect).reversed)
+
+            NSColor.black.withAlphaComponent(0.3).setFill()
+            overlayPath.fill()
+
             // Draw the selection border like macOS ⌘⇧4
             let borderPath = NSBezierPath(rect: selectionRect)
             borderPath.lineWidth = 1.0
@@ -193,8 +200,11 @@ private final class SelectionOverlayView: NSView {
             if selectionRect.width > 50 && selectionRect.height > 30 {
                 drawSizeInfo(for: selectionRect)
             }
+        } else {
+            // No selection yet - darken entire screen
+            NSColor.black.withAlphaComponent(0.3).setFill()
+            bounds.fill()
         }
-        // No darkening overlay - transparent background allows user to see content
     }
 
     private func drawCornerHandles(in rect: CGRect) {
