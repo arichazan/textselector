@@ -30,6 +30,20 @@ final class PreferencesViewModel: ObservableObject {
         }
     }
 
+    @Published var latinOnlyMode: Bool {
+        didSet {
+            guard latinOnlyMode != settings.latinOnlyMode else { return }
+            settings.latinOnlyMode = latinOnlyMode
+        }
+    }
+
+    @Published var enableRefinePass: Bool {
+        didSet {
+            guard enableRefinePass != settings.enableRefinePass else { return }
+            settings.enableRefinePass = enableRefinePass
+        }
+    }
+
     let availableLanguages = OCRLanguage.allCases
 
     private let settings: UserSettings
@@ -43,6 +57,8 @@ final class PreferencesViewModel: ObservableObject {
         self.showToast = settings.showToast
         self.launchAtLogin = settings.launchAtLogin
         self.selectedLanguage = settings.ocrLanguage
+        self.latinOnlyMode = settings.latinOnlyMode
+        self.enableRefinePass = settings.enableRefinePass
 
         bindSettings()
 
@@ -87,6 +103,20 @@ final class PreferencesViewModel: ObservableObject {
             .sink { [weak self] newValue in
                 guard let self, self.selectedLanguage != newValue else { return }
                 self.selectedLanguage = newValue
+            }
+            .store(in: &cancellables)
+
+        settings.$latinOnlyMode
+            .sink { [weak self] newValue in
+                guard let self, self.latinOnlyMode != newValue else { return }
+                self.latinOnlyMode = newValue
+            }
+            .store(in: &cancellables)
+
+        settings.$enableRefinePass
+            .sink { [weak self] newValue in
+                guard let self, self.enableRefinePass != newValue else { return }
+                self.enableRefinePass = newValue
             }
             .store(in: &cancellables)
     }

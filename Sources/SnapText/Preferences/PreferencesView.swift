@@ -6,32 +6,52 @@ struct PreferencesView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
             Form {
-                Section(header: Text("Capture")) {
-                    LabeledContent("Global Hotkey") {
+                Section(header: Text("preferences.capture.header", bundle: .module)) {
+                    LabeledContent {
                         HotkeyRecorderView(configuration: $viewModel.hotkey, displayString: viewModel.displayString)
+                    } label: {
+                        Text("preferences.globalHotkey", bundle: .module)
                     }
 
-                    Picker("OCR Language", selection: $viewModel.selectedLanguage) {
+                    Picker(selection: $viewModel.selectedLanguage) {
                         ForEach(viewModel.availableLanguages) { language in
-                            Text(language.displayName).tag(language)
+                            Text(language.localizedDisplayName).tag(language)
                         }
+                    } label: {
+                        Text("preferences.ocrLanguage", bundle: .module)
                     }
                     .pickerStyle(.segmented)
                 }
 
-                Section(header: Text("Feedback")) {
-                    Toggle("Show confirmation toast", isOn: $viewModel.showToast)
-                        .toggleStyle(.switch)
+                Section(header: Text("preferences.feedback.header", bundle: .module)) {
+                    Toggle(isOn: $viewModel.showToast) {
+                        Text("preferences.showToast", bundle: .module)
+                    }
+                    .toggleStyle(.switch)
                 }
 
-                Section(header: Text("Startup")) {
-                    Toggle("Launch SnapText at login", isOn: $viewModel.launchAtLogin)
-                        .toggleStyle(.switch)
+                Section(header: Text("preferences.startup.header", bundle: .module)) {
+                    Toggle(isOn: $viewModel.launchAtLogin) {
+                        Text("preferences.launchAtLogin", bundle: .module)
+                    }
+                    .toggleStyle(.switch)
+                }
+
+                Section(header: Text("preferences.advanced.header", bundle: .module)) {
+                    Toggle(isOn: $viewModel.latinOnlyMode) {
+                        Text("preferences.latinOnlyMode", bundle: .module)
+                    }
+                    .toggleStyle(.switch)
+
+                    Toggle(isOn: $viewModel.enableRefinePass) {
+                        Text("preferences.enableRefinePass", bundle: .module)
+                    }
+                    .toggleStyle(.switch)
                 }
             }
             .formStyle(.grouped)
 
-            Text("Changes are saved automatically.")
+            Text("preferences.autoSave", bundle: .module)
                 .font(.footnote)
                 .foregroundColor(.secondary)
         }

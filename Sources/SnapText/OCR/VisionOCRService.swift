@@ -78,7 +78,8 @@ final class VisionOCRService {
                 return
             }
 
-            print("VisionOCR: Found \(regions.count) text regions")
+            let message = String(format: localizedString("debug.regionDetection", comment: "Debug message for region detection"), regions.count)
+            print("VisionOCR: \(message)")
 
             // Process each line with dual language recognition
             self.processTextRegions(image: image, regions: regions, isLatinOnlyMode: isLatinOnlyMode, language: language, completion: completion)
@@ -133,7 +134,8 @@ final class VisionOCRService {
             let sortedResults = lineResults.sorted { $0.index < $1.index }
             let finalText = sortedResults.map { $0.text }.joined(separator: "\n")
 
-            print("VisionOCR: Final combined output: '\(finalText)'")
+            let message = String(format: localizedString("debug.finalOutput", comment: "Debug message for final output"), finalText)
+            print("VisionOCR: \(message)")
             completion(.success(OCRResult(text: finalText, engine: .vision, detectionType: .text)))
         }
     }

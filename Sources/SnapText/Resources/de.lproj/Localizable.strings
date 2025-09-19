@@ -1,0 +1,102 @@
+/* SnapText - German Localization */
+
+/* Menu Items */
+"menu.captureText" = "Text Erfassen";
+"menu.preferences" = "Einstellungen…";
+"menu.quit" = "SnapText Beenden";
+
+/* Preferences Window */
+"preferences.title" = "SnapText Einstellungen";
+"preferences.capture.header" = "Erfassung";
+"preferences.feedback.header" = "Rückmeldung";
+"preferences.startup.header" = "Start";
+"preferences.advanced.header" = "Erweitert";
+
+/* Preferences Labels */
+"preferences.globalHotkey" = "Globaler Hotkey";
+"preferences.ocrLanguage" = "OCR-Sprache";
+"preferences.showToast" = "Bestätigung anzeigen";
+"preferences.launchAtLogin" = "SnapText bei Anmeldung starten";
+"preferences.latinOnlyMode" = "Nur-Lateinisch-Modus (schneller für englischen/europäischen Text)";
+"preferences.enableRefinePass" = "Sprachverfeinerung aktivieren";
+"preferences.minAcceptConfidence" = "Minimaler Konfidenz-Schwellenwert";
+"preferences.reconsiderConfidence" = "Wiederholungs-Schwellenwert für Rotation";
+"preferences.autoSave" = "Änderungen werden automatisch gespeichert.";
+
+/* Toast Messages */
+"toast.copied" = "In Zwischenablage Kopiert";
+"toast.qrCode" = "QR-Code In Zwischenablage Kopiert";
+"toast.barcode" = "Barcode In Zwischenablage Kopiert";
+"toast.failed" = "OCR Fehlgeschlagen";
+"toast.noText" = "Kein Text Gefunden";
+"toast.permission" = "Bildschirmberechtigung Erforderlich";
+
+/* Result Window */
+"result.title" = "Erfassungsergebnis";
+"result.text" = "Text";
+"result.qrCode" = "QR-Code";
+"result.barcode" = "Barcode";
+
+/* Permission Dialog */
+"permission.title" = "SnapText benötigt Bildschirmzugriff";
+"permission.message" = "Um Text von Ihrem Bildschirm zu erfassen, benötigt SnapText die Berechtigung, Ihren Bildschirm aufzuzeichnen. Diese Berechtigung kann in Systemeinstellungen > Datenschutz & Sicherheit > Bildschirmaufzeichnung erteilt werden.";
+"permission.continue" = "Fortfahren";
+"permission.openSettings" = "Systemeinstellungen Öffnen";
+
+/* Error Messages */
+"error.generic" = "Etwas ist schiefgelaufen";
+"error.noText" = "Kein Text im ausgewählten Bereich gefunden";
+"error.ocrFailed" = "OCR-Verarbeitung fehlgeschlagen";
+"error.imageCapture" = "Bildschirmaufnahme fehlgeschlagen";
+"error.permission" = "Bildschirmaufzeichnungsberechtigung erforderlich";
+"error.tesseractInit" = "Tesseract-Initialisierung fehlgeschlagen";
+"error.visionOCR" = "Vision OCR fehlgeschlagen";
+"error.primaryAndFallback" = "Sowohl primäre als auch Fallback-OCR fehlgeschlagen";
+
+/* OCR Engine Messages */
+"ocr.processing" = "Verarbeitung…";
+"ocr.engine.vision" = "Vision";
+"ocr.engine.tesseract" = "Tesseract";
+"ocr.detectionType.text" = "Text";
+"ocr.detectionType.qrCode" = "QR-Code";
+"ocr.detectionType.barcode" = "Barcode";
+
+/* Language Names */
+"language.english" = "Englisch";
+"language.chineseSimplified" = "Chinesisch (Vereinfacht)";
+"language.chineseTraditional" = "Chinesisch (Traditionell)";
+"language.japanese" = "Japanisch";
+"language.korean" = "Koreanisch";
+"language.spanish" = "Spanisch";
+"language.french" = "Französisch";
+"language.german" = "Deutsch";
+"language.italian" = "Italienisch";
+"language.portuguese" = "Portugiesisch";
+"language.russian" = "Russisch";
+"language.arabic" = "Arabisch";
+
+/* Accessibility */
+"accessibility.statusItem" = "SnapText - Klicken Sie, um Text vom Bildschirm zu erfassen";
+"accessibility.captureOverlay" = "Text-Erfassungsüberlagerung - ziehen Sie, um Bereich auszuwählen";
+"accessibility.hotkeyRecorder" = "Hotkey-Rekorder - drücken Sie Tasten, um Verknüpfung festzulegen";
+
+/* Status Messages */
+"status.ready" = "Bereit zum Erfassen";
+"status.capturing" = "Erfassung…";
+"status.processing" = "Bild wird verarbeitet…";
+"status.complete" = "Erfassung abgeschlossen";
+
+/* Hotkey Display */
+"hotkey.command" = "⌘";
+"hotkey.option" = "⌥";
+"hotkey.control" = "⌃";
+"hotkey.shift" = "⇧";
+"hotkey.space" = "Leertaste";
+"hotkey.none" = "Kein Hotkey festgelegt";
+
+/* Debug Messages (for console/logs) */
+"debug.regionDetection" = "%d Textbereiche gefunden";
+"debug.lineProcessing" = "Verarbeitung von Zeile %d von %d";
+"debug.confidenceComparison" = "Lateinisch: %.3f, CJK: %.3f, Gewählt: %@";
+"debug.rotationRetry" = "Niedrige Konfidenz, versuche Rotation";
+"debug.finalOutput" = "Finale OCR-Ausgabe: %@";

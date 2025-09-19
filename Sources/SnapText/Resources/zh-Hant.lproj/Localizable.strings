@@ -1,0 +1,102 @@
+/* SnapText - Chinese Traditional Localization */
+
+/* Menu Items */
+"menu.captureText" = "擷取文字";
+"menu.preferences" = "偏好設定…";
+"menu.quit" = "結束 SnapText";
+
+/* Preferences Window */
+"preferences.title" = "SnapText 偏好設定";
+"preferences.capture.header" = "擷取";
+"preferences.feedback.header" = "回饋";
+"preferences.startup.header" = "啟動";
+"preferences.advanced.header" = "進階";
+
+/* Preferences Labels */
+"preferences.globalHotkey" = "全域快速鍵";
+"preferences.ocrLanguage" = "OCR 語言";
+"preferences.showToast" = "顯示確認提示";
+"preferences.launchAtLogin" = "登入時啟動 SnapText";
+"preferences.latinOnlyMode" = "僅拉丁模式（對英文/歐洲文字更快）";
+"preferences.enableRefinePass" = "啟用語言優化";
+"preferences.minAcceptConfidence" = "最小可接受信賴度臨界值";
+"preferences.reconsiderConfidence" = "旋轉重試信賴度臨界值";
+"preferences.autoSave" = "變更會自動儲存。";
+
+/* Toast Messages */
+"toast.copied" = "已複製到剪貼簿";
+"toast.qrCode" = "QR 碼已複製到剪貼簿";
+"toast.barcode" = "條碼已複製到剪貼簿";
+"toast.failed" = "OCR 失敗";
+"toast.noText" = "未找到文字";
+"toast.permission" = "需要螢幕權限";
+
+/* Result Window */
+"result.title" = "擷取結果";
+"result.text" = "文字";
+"result.qrCode" = "QR 碼";
+"result.barcode" = "條碼";
+
+/* Permission Dialog */
+"permission.title" = "SnapText 需要螢幕存取權限";
+"permission.message" = "要從螢幕擷取文字，SnapText 需要錄製螢幕的權限。此權限可在系統設定 > 隱私權與安全性 > 螢幕錄製中授予。";
+"permission.continue" = "繼續";
+"permission.openSettings" = "開啟系統設定";
+
+/* Error Messages */
+"error.generic" = "發生錯誤";
+"error.noText" = "在選定區域中未找到文字";
+"error.ocrFailed" = "OCR 處理失敗";
+"error.imageCapture" = "螢幕影像擷取失敗";
+"error.permission" = "需要螢幕錄製權限";
+"error.tesseractInit" = "Tesseract 初始化失敗";
+"error.visionOCR" = "Vision OCR 失敗";
+"error.primaryAndFallback" = "主要和備用 OCR 都失敗了";
+
+/* OCR Engine Messages */
+"ocr.processing" = "處理中…";
+"ocr.engine.vision" = "Vision";
+"ocr.engine.tesseract" = "Tesseract";
+"ocr.detectionType.text" = "文字";
+"ocr.detectionType.qrCode" = "QR 碼";
+"ocr.detectionType.barcode" = "條碼";
+
+/* Language Names */
+"language.english" = "英語";
+"language.chineseSimplified" = "中文（簡體）";
+"language.chineseTraditional" = "中文（繁體）";
+"language.japanese" = "日語";
+"language.korean" = "韓語";
+"language.spanish" = "西班牙語";
+"language.french" = "法語";
+"language.german" = "德語";
+"language.italian" = "義大利語";
+"language.portuguese" = "葡萄牙語";
+"language.russian" = "俄語";
+"language.arabic" = "阿拉伯語";
+
+/* Accessibility */
+"accessibility.statusItem" = "SnapText - 點擊從螢幕擷取文字";
+"accessibility.captureOverlay" = "文字擷取覆蓋層 - 拖動選擇區域";
+"accessibility.hotkeyRecorder" = "快速鍵錄製器 - 按鍵設定快速鍵";
+
+/* Status Messages */
+"status.ready" = "準備擷取";
+"status.capturing" = "擷取中…";
+"status.processing" = "處理影像中…";
+"status.complete" = "擷取完成";
+
+/* Hotkey Display */
+"hotkey.command" = "⌘";
+"hotkey.option" = "⌥";
+"hotkey.control" = "⌃";
+"hotkey.shift" = "⇧";
+"hotkey.space" = "空白鍵";
+"hotkey.none" = "未設定快速鍵";
+
+/* Debug Messages (for console/logs) */
+"debug.regionDetection" = "找到 %d 個文字區域";
+"debug.lineProcessing" = "處理第 %d 行，共 %d 行";
+"debug.confidenceComparison" = "拉丁文：%.3f，中日韓文：%.3f，選擇：%@";
+"debug.rotationRetry" = "信賴度低，嘗試旋轉";
+"debug.finalOutput" = "最終 OCR 輸出：%@";

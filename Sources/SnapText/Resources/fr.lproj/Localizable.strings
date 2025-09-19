@@ -1,0 +1,102 @@
+/* SnapText - French Localization */
+
+/* Menu Items */
+"menu.captureText" = "Capturer le Texte";
+"menu.preferences" = "Préférences…";
+"menu.quit" = "Quitter SnapText";
+
+/* Preferences Window */
+"preferences.title" = "Préférences SnapText";
+"preferences.capture.header" = "Capture";
+"preferences.feedback.header" = "Commentaires";
+"preferences.startup.header" = "Démarrage";
+"preferences.advanced.header" = "Avancé";
+
+/* Preferences Labels */
+"preferences.globalHotkey" = "Raccourci Global";
+"preferences.ocrLanguage" = "Langue OCR";
+"preferences.showToast" = "Afficher la confirmation";
+"preferences.launchAtLogin" = "Lancer SnapText à la connexion";
+"preferences.latinOnlyMode" = "Mode latin uniquement (plus rapide pour le texte anglais/européen)";
+"preferences.enableRefinePass" = "Activer le raffinement linguistique";
+"preferences.minAcceptConfidence" = "Seuil de confiance minimum";
+"preferences.reconsiderConfidence" = "Seuil de nouvelle tentative pour rotation";
+"preferences.autoSave" = "Les modifications sont sauvegardées automatiquement.";
+
+/* Toast Messages */
+"toast.copied" = "Copié dans le Presse-papiers";
+"toast.qrCode" = "Code QR Copié dans le Presse-papiers";
+"toast.barcode" = "Code-barres Copié dans le Presse-papiers";
+"toast.failed" = "Échec OCR";
+"toast.noText" = "Aucun Texte Trouvé";
+"toast.permission" = "Permission d'Écran Requise";
+
+/* Result Window */
+"result.title" = "Résultat de Capture";
+"result.text" = "Texte";
+"result.qrCode" = "Code QR";
+"result.barcode" = "Code-barres";
+
+/* Permission Dialog */
+"permission.title" = "SnapText a besoin d'un accès à l'écran";
+"permission.message" = "Pour capturer le texte de votre écran, SnapText a besoin de la permission d'enregistrer votre écran. Cette permission peut être accordée dans Réglages Système > Confidentialité et Sécurité > Enregistrement d'Écran.";
+"permission.continue" = "Continuer";
+"permission.openSettings" = "Ouvrir les Réglages Système";
+
+/* Error Messages */
+"error.generic" = "Quelque chose s'est mal passé";
+"error.noText" = "Aucun texte trouvé dans la zone sélectionnée";
+"error.ocrFailed" = "Le traitement OCR a échoué";
+"error.imageCapture" = "Échec de capture d'image d'écran";
+"error.permission" = "Permission d'enregistrement d'écran requise";
+"error.tesseractInit" = "Échec d'initialisation de Tesseract";
+"error.visionOCR" = "Échec de Vision OCR";
+"error.primaryAndFallback" = "Échec de l'OCR principal et de secours";
+
+/* OCR Engine Messages */
+"ocr.processing" = "Traitement…";
+"ocr.engine.vision" = "Vision";
+"ocr.engine.tesseract" = "Tesseract";
+"ocr.detectionType.text" = "Texte";
+"ocr.detectionType.qrCode" = "Code QR";
+"ocr.detectionType.barcode" = "Code-barres";
+
+/* Language Names */
+"language.english" = "Anglais";
+"language.chineseSimplified" = "Chinois (Simplifié)";
+"language.chineseTraditional" = "Chinois (Traditionnel)";
+"language.japanese" = "Japonais";
+"language.korean" = "Coréen";
+"language.spanish" = "Espagnol";
+"language.french" = "Français";
+"language.german" = "Allemand";
+"language.italian" = "Italien";
+"language.portuguese" = "Portugais";
+"language.russian" = "Russe";
+"language.arabic" = "Arabe";
+
+/* Accessibility */
+"accessibility.statusItem" = "SnapText - Cliquez pour capturer le texte de l'écran";
+"accessibility.captureOverlay" = "Superposition de capture de texte - faites glisser pour sélectionner la zone";
+"accessibility.hotkeyRecorder" = "Enregistreur de raccourci - appuyez sur les touches pour définir le raccourci";
+
+/* Status Messages */
+"status.ready" = "Prêt à capturer";
+"status.capturing" = "Capture…";
+"status.processing" = "Traitement de l'image…";
+"status.complete" = "Capture terminée";
+
+/* Hotkey Display */
+"hotkey.command" = "⌘";
+"hotkey.option" = "⌥";
+"hotkey.control" = "⌃";
+"hotkey.shift" = "⇧";
+"hotkey.space" = "Espace";
+"hotkey.none" = "Aucun raccourci défini";
+
+/* Debug Messages (for console/logs) */
+"debug.regionDetection" = "%d régions de texte trouvées";
+"debug.lineProcessing" = "Traitement de la ligne %d sur %d";
+"debug.confidenceComparison" = "Latin : %.3f, CJK : %.3f, Choisi : %@";
+"debug.rotationRetry" = "Confiance faible, tentative de rotation";
+"debug.finalOutput" = "Sortie OCR finale : %@";

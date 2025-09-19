@@ -14,17 +14,22 @@ final class StatusItemController {
 
     private func configureStatusItem() {
         if let button = statusItem.button {
-            button.image = NSImage(systemSymbolName: "text.viewfinder", accessibilityDescription: "SnapText")
+            let accessibilityDesc = localizedString("accessibility.statusItem", comment: "Status item accessibility description")
+            button.image = NSImage(systemSymbolName: "text.viewfinder", accessibilityDescription: accessibilityDesc)
             button.imagePosition = .imageOnly
             button.target = self
             button.action = #selector(handlePrimaryAction)
         }
 
         let menu = NSMenu()
-        menu.addItem(withTitle: "Capture Text", action: #selector(handleCapture), keyEquivalent: "")
+        let captureTitle = localizedString("menu.captureText", comment: "Capture text menu item")
+        let preferencesTitle = localizedString("menu.preferences", comment: "Preferences menu item")
+        let quitTitle = localizedString("menu.quit", comment: "Quit menu item")
+
+        menu.addItem(withTitle: captureTitle, action: #selector(handleCapture), keyEquivalent: "")
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(withTitle: "Preferences…", action: #selector(handlePreferences), keyEquivalent: ",")
-        menu.addItem(withTitle: "Quit SnapText", action: #selector(handleQuit), keyEquivalent: "q")
+        menu.addItem(withTitle: preferencesTitle, action: #selector(handlePreferences), keyEquivalent: ",")
+        menu.addItem(withTitle: quitTitle, action: #selector(handleQuit), keyEquivalent: "q")
         menu.items.forEach { $0.target = self }
         statusItem.menu = menu
     }

@@ -1,0 +1,6 @@
+/* InfoPlist.strings - Chinese Simplified Localization */
+
+"CFBundleDisplayName" = "SnapText";
+"NSCameraUsageDescription" = "SnapText 需要访问相机以从图像捕获文本。";
+"NSScreenCaptureDescription" = "SnapText 需要屏幕录制权限以从您的屏幕捕获文本。";
+"NSSystemExtensionUsageDescription" = "SnapText 使用屏幕录制来捕获和识别您显示器上的文本。";

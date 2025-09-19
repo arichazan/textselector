@@ -3,6 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "SnapText",
+    defaultLocalization: "en",
     platforms: [
         .macOS(.v14)
     ],
@@ -12,7 +13,10 @@ let package = Package(
     targets: [
         .executableTarget(
             name: "SnapText",
-            path: "Sources/SnapText"
+            path: "Sources/SnapText",
+            resources: [
+                .process("Resources")
+            ]
         )
     ]
 )

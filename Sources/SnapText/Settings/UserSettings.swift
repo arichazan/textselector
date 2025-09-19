@@ -152,6 +152,35 @@ enum OCRLanguage: String, CaseIterable, Identifiable {
         }
     }
 
+    var localizedDisplayName: String {
+        switch self {
+        case .english:
+            return localizedString("language.english", comment: "English language name")
+        case .chineseSimplified:
+            return localizedString("language.chineseSimplified", comment: "Chinese Simplified language name")
+        case .chineseTraditional:
+            return localizedString("language.chineseTraditional", comment: "Chinese Traditional language name")
+        case .japanese:
+            return localizedString("language.japanese", comment: "Japanese language name")
+        case .korean:
+            return localizedString("language.korean", comment: "Korean language name")
+        case .spanish:
+            return localizedString("language.spanish", comment: "Spanish language name")
+        case .french:
+            return localizedString("language.french", comment: "French language name")
+        case .german:
+            return localizedString("language.german", comment: "German language name")
+        case .italian:
+            return localizedString("language.italian", comment: "Italian language name")
+        case .portuguese:
+            return localizedString("language.portuguese", comment: "Portuguese language name")
+        case .russian:
+            return localizedString("language.russian", comment: "Russian language name")
+        case .arabic:
+            return localizedString("language.arabic", comment: "Arabic language name")
+        }
+    }
+
     var visionRecognitionLanguage: String {
         switch self {
         case .english:

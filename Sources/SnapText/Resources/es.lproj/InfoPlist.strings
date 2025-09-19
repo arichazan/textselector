@@ -1,0 +1,6 @@
+/* InfoPlist.strings - Spanish Localization */
+
+"CFBundleDisplayName" = "SnapText";
+"NSCameraUsageDescription" = "SnapText necesita acceso a la cámara para capturar texto de imágenes.";
+"NSScreenCaptureDescription" = "SnapText necesita permiso de grabación de pantalla para capturar texto de su pantalla.";
+"NSSystemExtensionUsageDescription" = "SnapText utiliza grabación de pantalla para capturar y reconocer texto de su pantalla.";

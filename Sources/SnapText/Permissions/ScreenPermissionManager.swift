@@ -29,10 +29,10 @@ final class ScreenPermissionManager {
         guard userDefaults.bool(forKey: onboardingKey) == false else { return }
 
         let alert = NSAlert()
-        alert.messageText = "SnapText needs screen access"
-        alert.informativeText = "To capture text from your screen, macOS requires granting SnapText Screen Recording permission. You'll see the standard system prompt next."
+        alert.messageText = localizedString("permission.title", comment: "Permission dialog title")
+        alert.informativeText = localizedString("permission.message", comment: "Permission dialog message")
         alert.alertStyle = .informational
-        alert.addButton(withTitle: "Continue")
+        alert.addButton(withTitle: localizedString("permission.continue", comment: "Continue button"))
 
         if let window = NSApp.mainWindow {
             alert.beginSheetModal(for: window) { _ in }

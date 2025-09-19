@@ -57,11 +57,11 @@ struct CaptureResultView: View {
     private var titleText: String {
         switch result.detectionType {
         case .qrCode:
-            return "QR Code Detected"
+            return localizedString("result.qrCode", comment: "QR Code result title")
         case .barcode:
-            return "Barcode Detected"
+            return localizedString("result.barcode", comment: "Barcode result title")
         case .text:
-            return "Text Captured"
+            return localizedString("result.text", comment: "Text result title")
         }
     }
 }

@@ -40,7 +40,8 @@ final class SnapTextAppDelegate: NSObject, NSApplicationDelegate {
         permissionManager.ensurePermission { [weak self] granted in
             guard let self else { return }
             guard granted else {
-                self.toastPresenter.show(message: "Text could not be captured.")
+                let message = localizedString("toast.permission", comment: "Permission required toast")
+                self.toastPresenter.show(message: message)
                 return
             }
 
@@ -53,10 +54,12 @@ final class SnapTextAppDelegate: NSObject, NSApplicationDelegate {
                     case .cancelled:
                         break // Silent cancel per requirements
                     case .screenshotFailed:
-                        self.toastPresenter.show(message: "Text could not be captured.")
+                        let message = localizedString("toast.failed", comment: "OCR failed toast")
+                        self.toastPresenter.show(message: message)
                     case let .ocrFailed(underlyingError):
                         NSLog("OCR failed with error: \(underlyingError.localizedDescription)")
-                        self.toastPresenter.show(message: "Text could not be captured.")
+                        let message = localizedString("toast.failed", comment: "OCR failed toast")
+                        self.toastPresenter.show(message: message)
                     }
                 }
             }
@@ -88,7 +91,8 @@ final class SnapTextAppDelegate: NSObject, NSApplicationDelegate {
                 backing: .buffered,
                 defer: false
             )
-            preferencesWindow?.title = "SnapText Preferences"
+            let title = localizedString("preferences.title", comment: "Preferences window title")
+            preferencesWindow?.title = title
             preferencesWindow?.contentView = hostingView
             preferencesWindow?.center()
             preferencesWindow?.setFrameAutosaveName("PreferencesWindow")
@@ -118,11 +122,11 @@ final class SnapTextAppDelegate: NSObject, NSApplicationDelegate {
                 let message: String
                 switch result.detectionType {
                 case .qrCode:
-                    message = "QR Code Copied to Clipboard"
+                    message = localizedString("toast.qrCode", comment: "QR code copied toast")
                 case .barcode:
-                    message = "Barcode Copied to Clipboard"
+                    message = localizedString("toast.barcode", comment: "Barcode copied toast")
                 case .text:
-                    message = "Copied to Clipboard"
+                    message = localizedString("toast.copied", comment: "Text copied toast")
                 }
                 self.toastPresenter.show(message: message)
             }
@@ -136,7 +140,8 @@ final class SnapTextAppDelegate: NSObject, NSApplicationDelegate {
             backing: .buffered,
             defer: false
         )
-        resultWindow?.title = "Capture Result"
+        let resultTitle = localizedString("result.title", comment: "Result window title")
+        resultWindow?.title = resultTitle
         resultWindow?.contentView = hostingView
         resultWindow?.center()
         resultWindow?.level = .floating

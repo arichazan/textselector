@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ocr.linesProcessed</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@lines@ processed</string>
+		<key>lines</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>No lines processed</string>
+			<key>one</key>
+			<string>%d line processed</string>
+			<key>other</key>
+			<string>%d lines processed</string>
+		</dict>
+	</dict>
+	<key>ocr.regionsFound</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@regions@ found</string>
+		<key>regions</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>No text regions found</string>
+			<key>one</key>
+			<string>%d text region found</string>
+			<key>other</key>
+			<string>%d text regions found</string>
+		</dict>
+	</dict>
+	<key>ocr.charactersRecognized</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@chars@ recognized</string>
+		<key>chars</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>No characters recognized</string>
+			<key>one</key>
+			<string>%d character recognized</string>
+			<key>other</key>
+			<string>%d characters recognized</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
