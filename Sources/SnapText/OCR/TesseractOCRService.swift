@@ -13,7 +13,7 @@ typealias PlatformImage = NSImage
 final class TesseractOCRService {
     func recognize(image: CGImage, language: OCRLanguage, completion: @escaping (Result<String, Error>) -> Void) {
         DispatchQueue.global(qos: .userInitiated).async {
-            guard let tesseract = G8Tesseract(language: language.rawValue) else {
+            guard let tesseract = G8Tesseract(language: language.tesseractLanguageCode) else {
                 DispatchQueue.main.async {
                     completion(.failure(TesseractError.initializationFailed))
                 }
