@@ -1,0 +1,6 @@
+/* InfoPlist.strings - Chinese Traditional Localization */
+
+"CFBundleDisplayName" = "GrabDab";
+"NSCameraUsageDescription" = "GrabDab 需要存取相機以從影像擷取文字。";
+"NSScreenCaptureDescription" = "GrabDab 需要螢幕錄製權限以從您的螢幕擷取文字。";
+"NSSystemExtensionUsageDescription" = "GrabDab 使用螢幕錄製來擷取和識別您螢幕上的文字。";

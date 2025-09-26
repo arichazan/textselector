@@ -1,0 +1,6 @@
+/* InfoPlist.strings - Base Localization (English) */
+
+"CFBundleDisplayName" = "GrabDab";
+"NSCameraUsageDescription" = "GrabDab needs camera access to Capture Text/QR/Bar Code from images.";
+"NSScreenCaptureDescription" = "GrabDab needs screen recording permission to capture text from your screen.";
+"NSSystemExtensionUsageDescription" = "GrabDab uses screen recording to capture and recognize text from your display.";

@@ -8,7 +8,7 @@
 ---
 
 ## 1. Overview
-SnapText is a lightweight macOS utility that lets users instantly capture text from any portion of their screen and copy it to the clipboard. The app runs locally, prioritizes speed and privacy, and integrates with macOS system features (hotkeys, menu bar, clipboard).
+SnapText is a lightweight macOS utility that lets users instantly Capture Text/QR/Bar Code from any portion of their screen and copy it to the clipboard. The app runs locally, prioritizes speed and privacy, and integrates with macOS system features (hotkeys, menu bar, clipboard).
 
 Goal: reduce the process of extracting text from an image, video, PDF, or any app on screen to a single keyboard shortcut.
 
@@ -16,7 +16,7 @@ Goal: reduce the process of extracting text from an image, video, PDF, or any ap
 
 ## 2. Objectives & Success Criteria
 
-- **Primary Objective:** Enable users to capture text from any on-screen source in under 3 seconds.  
+- **Primary Objective:** Enable users to Capture Text/QR/Bar Code from any on-screen source in under 3 seconds.  
 - **Secondary Objectives:**  
   - No internet required (local OCR).  
   - Minimal system resource usage.  
@@ -70,7 +70,7 @@ Goal: reduce the process of extracting text from an image, video, PDF, or any ap
 ## 6. UI/UX
 
 - **Activation:** Global hotkey triggers dark overlay → drag to select region → OCR runs instantly.  
-- **Menu Bar:** Minimalist dropdown with “Capture Text,” Preferences, optional recent captures.  
+- **Menu Bar:** Minimalist dropdown with “Capture Text/QR/Bar Code,” Preferences, optional recent captures.  
 - **Feedback:** Silent copy by default; optional toast “Copied to Clipboard.”  
 
 ---

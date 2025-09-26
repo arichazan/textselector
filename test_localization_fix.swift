@@ -6,7 +6,7 @@ import Foundation
 func localizedString(_ key: String, comment: String = "") -> String {
     // In the actual app, this would use Bundle.module
     // For this test, we'll just check if the key would be found
-    return key == "menu.captureText" ? "Capture Text" : key
+    return key == "menu.captureText" ? "Capture Text/QR/Bar Code" : key
 }
 
 // Test the menu items that were showing as variables
@@ -35,7 +35,7 @@ print("Bundle Configuration: ✅ defaultLocalization set to 'en'")
 print("")
 print("The fix should resolve the menu showing variable names.")
 print("Menu items should now display:")
-print("  • Capture Text")
+print("  • Capture Text/QR/Bar Code")
 print("  • Preferences…")
 print("  • Quit SnapText")
 print("")

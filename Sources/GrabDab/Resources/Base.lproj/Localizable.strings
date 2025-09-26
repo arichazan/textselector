@@ -1,12 +1,12 @@
-/* SnapText - Base Localization (English) */
+/* GrabDab - Base Localization (English) */
 
 /* Menu Items */
-"menu.captureText" = "Capture Text/QR/Bar Code";
+"menu.captureText" = "Grab Text/Code";
 "menu.preferences" = "Preferences…";
-"menu.quit" = "Quit SnapText";
+"menu.quit" = "Quit GrabDab";
 
 /* Preferences Window */
-"preferences.title" = "SnapText Preferences";
+"preferences.title" = "GrabDab Preferences";
 "preferences.capture.header" = "Capture";
 "preferences.feedback.header" = "Feedback";
 "preferences.startup.header" = "Startup";
@@ -16,7 +16,7 @@
 "preferences.globalHotkey" = "Global Hotkey";
 "preferences.ocrLanguage" = "OCR Language";
 "preferences.showToast" = "Show confirmation toast";
-"preferences.launchAtLogin" = "Launch SnapText at login";
+"preferences.launchAtLogin" = "Launch GrabDab at login";
 "preferences.latinOnlyMode" = "Latin-only mode (faster for English/European text)";
 "preferences.enableRefinePass" = "Enable language refinement";
 "preferences.minAcceptConfidence" = "Minimum confidence threshold";
@@ -38,8 +38,8 @@
 "result.barcode" = "Barcode";
 
 /* Permission Dialog */
-"permission.title" = "SnapText needs screen access";
-"permission.message" = "To Capture Text/QR/Bar Code from your screen, SnapText needs permission to record your screen. This permission can be granted in System Settings > Privacy & Security > Screen Recording.";
+"permission.title" = "GrabDab needs screen access";
+"permission.message" = "To Capture Text/QR/Bar Code from your screen, GrabDab needs permission to record your screen. This permission can be granted in System Settings > Privacy & Security > Screen Recording.";
 "permission.continue" = "Continue";
 "permission.openSettings" = "Open System Settings";
 
@@ -76,8 +76,8 @@
 "language.arabic" = "Arabic";
 
 /* Accessibility */
-"accessibility.statusItem" = "SnapText - Click to Capture Text/QR/Bar Code from screen";
-"accessibility.captureOverlay" = "Text capture overlay - drag to select area";
+"accessibility.statusItem" = "GrabDab - Click to grab text/code from screen";
+"accessibility.captureOverlay" = "Text/code grab overlay - drag to select area";
 "accessibility.hotkeyRecorder" = "Hotkey recorder - press keys to set shortcut";
 
 /* Status Messages */

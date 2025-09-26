@@ -1,0 +1,6 @@
+/* InfoPlist.strings - Italian Localization */
+
+"CFBundleDisplayName" = "GrabDab";
+"NSCameraUsageDescription" = "GrabDab necessita l'accesso alla fotocamera per catturare testo dalle immagini.";
+"NSScreenCaptureDescription" = "GrabDab necessita il permesso di registrazione schermo per catturare testo dal tuo schermo.";
+"NSSystemExtensionUsageDescription" = "GrabDab utilizza la registrazione schermo per catturare e riconoscere testo dal tuo display.";

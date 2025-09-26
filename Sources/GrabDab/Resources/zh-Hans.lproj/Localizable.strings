@@ -1,0 +1,102 @@
+/* GrabDab - Chinese Simplified Localization */
+
+/* Menu Items */
+"menu.captureText" = "捕获文本";
+"menu.preferences" = "偏好设置…";
+"menu.quit" = "退出 GrabDab";
+
+/* Preferences Window */
+"preferences.title" = "GrabDab 偏好设置";
+"preferences.capture.header" = "捕获";
+"preferences.feedback.header" = "反馈";
+"preferences.startup.header" = "启动";
+"preferences.advanced.header" = "高级";
+
+/* Preferences Labels */
+"preferences.globalHotkey" = "全局快捷键";
+"preferences.ocrLanguage" = "OCR 语言";
+"preferences.showToast" = "显示确认提示";
+"preferences.launchAtLogin" = "登录时启动 GrabDab";
+"preferences.latinOnlyMode" = "仅拉丁模式（对英文/欧洲文本更快）";
+"preferences.enableRefinePass" = "启用语言优化";
+"preferences.minAcceptConfidence" = "最小可接受置信度阈值";
+"preferences.reconsiderConfidence" = "旋转重试置信度阈值";
+"preferences.autoSave" = "更改会自动保存。";
+
+/* Toast Messages */
+"toast.copied" = "已复制到剪贴板";
+"toast.qrCode" = "二维码已复制到剪贴板";
+"toast.barcode" = "条形码已复制到剪贴板";
+"toast.failed" = "OCR 失败";
+"toast.noText" = "未找到文本";
+"toast.permission" = "需要屏幕权限";
+
+/* Result Window */
+"result.title" = "捕获结果";
+"result.text" = "文本";
+"result.qrCode" = "二维码";
+"result.barcode" = "条形码";
+
+/* Permission Dialog */
+"permission.title" = "GrabDab 需要屏幕访问权限";
+"permission.message" = "要从屏幕捕获文本，GrabDab 需要录制屏幕的权限。此权限可在系统设置 > 隐私与安全性 > 屏幕录制中授予。";
+"permission.continue" = "继续";
+"permission.openSettings" = "打开系统设置";
+
+/* Error Messages */
+"error.generic" = "出现错误";
+"error.noText" = "在选定区域中未找到文本";
+"error.ocrFailed" = "OCR 处理失败";
+"error.imageCapture" = "屏幕图像捕获失败";
+"error.permission" = "需要屏幕录制权限";
+"error.tesseractInit" = "Tesseract 初始化失败";
+"error.visionOCR" = "Vision OCR 失败";
+"error.primaryAndFallback" = "主要和备用 OCR 都失败了";
+
+/* OCR Engine Messages */
+"ocr.processing" = "处理中…";
+"ocr.engine.vision" = "Vision";
+"ocr.engine.tesseract" = "Tesseract";
+"ocr.detectionType.text" = "文本";
+"ocr.detectionType.qrCode" = "二维码";
+"ocr.detectionType.barcode" = "条形码";
+
+/* Language Names */
+"language.english" = "英语";
+"language.chineseSimplified" = "中文（简体）";
+"language.chineseTraditional" = "中文（繁体）";
+"language.japanese" = "日语";
+"language.korean" = "韩语";
+"language.spanish" = "西班牙语";
+"language.french" = "法语";
+"language.german" = "德语";
+"language.italian" = "意大利语";
+"language.portuguese" = "葡萄牙语";
+"language.russian" = "俄语";
+"language.arabic" = "阿拉伯语";
+
+/* Accessibility */
+"accessibility.statusItem" = "GrabDab - 点击从屏幕捕获文本";
+"accessibility.captureOverlay" = "文本捕获覆盖层 - 拖动选择区域";
+"accessibility.hotkeyRecorder" = "快捷键录制器 - 按键设置快捷键";
+
+/* Status Messages */
+"status.ready" = "准备捕获";
+"status.capturing" = "捕获中…";
+"status.processing" = "处理图像中…";
+"status.complete" = "捕获完成";
+
+/* Hotkey Display */
+"hotkey.command" = "⌘";
+"hotkey.option" = "⌥";
+"hotkey.control" = "⌃";
+"hotkey.shift" = "⇧";
+"hotkey.space" = "空格";
+"hotkey.none" = "未设置快捷键";
+
+/* Debug Messages (for console/logs) */
+"debug.regionDetection" = "找到 %d 个文本区域";
+"debug.lineProcessing" = "处理第 %d 行，共 %d 行";
+"debug.confidenceComparison" = "拉丁文：%.3f，中日韩文：%.3f，选择：%@";
+"debug.rotationRetry" = "置信度低，尝试旋转";
+"debug.finalOutput" = "最终 OCR 输出：%@";

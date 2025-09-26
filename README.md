@@ -6,7 +6,7 @@ SnapText is a native macOS menu bar utility that captures on-screen text with a 
 - **Instant capture:** Default shortcut `⌘⇧2` launches a drag-to-select overlay; Escape or right-click cancels silently.
 - **On-device OCR:** Uses the macOS Vision framework first and automatically falls back to Tesseract when available. Failure messaging is intentionally engine-agnostic.
 - **Clipboard ready:** Successful captures write directly to the clipboard and can surface an optional confirmation toast.
-- **Menu bar presence:** Status item with quick “Capture Text”, Preferences, and Quit entries keeps the utility discoverable without a Dock icon.
+- **Menu bar presence:** Status item with quick “Capture Text/QR/Bar Code”, Preferences, and Quit entries keeps the utility discoverable without a Dock icon.
 - **Configurable preferences:** Users can remap the shortcut (modifier combos only), toggle the confirmation toast, select the OCR language (English for MVP), and opt into launch at login.
 
 ## Project Structure

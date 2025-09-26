@@ -27,7 +27,7 @@ Resources/
 
 ### 2. Localized String Categories ✅
 
-- **Menu Items**: Capture Text, Preferences, Quit
+- **Menu Items**: Capture Text/QR/Bar Code, Preferences, Quit
 - **Preferences UI**: All settings labels and headers
 - **Toast Messages**: Success/error feedback
 - **Window Titles**: Preferences and result windows
@@ -55,7 +55,7 @@ Resources/
 
 #### NSLocalizedString Usage
 ```swift
-let title = NSLocalizedString("menu.captureText", comment: "Capture text menu item")
+let title = NSLocalizedString("menu.captureText", comment: "Capture Text/QR/Bar Code menu item")
 ```
 
 #### SwiftUI Text Localization

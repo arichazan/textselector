@@ -1,0 +1,264 @@
+import AppKit
+import Combine
+
+final class UserSettings: ObservableObject {
+    static let shared = UserSettings()
+
+    enum Keys: String {
+        case hotkey
+        case ocrLanguage
+        case showToast
+        case launchAtLogin
+        case latinOnlyMode
+        case enableRefinePass
+        case minAcceptConfidence
+        case reconsiderConfidence
+        case trialStartDate
+        case isPremium
+        case hasShownTrialExpired
+    }
+
+    @Published var hotkey: HotkeyConfiguration {
+        didSet { persistHotkey() }
+    }
+
+    @Published var ocrLanguage: OCRLanguage {
+        didSet { persistLanguage() }
+    }
+
+    @Published var showToast: Bool {
+        didSet { persistToggle(.showToast, value: showToast) }
+    }
+
+    @Published var launchAtLogin: Bool {
+        didSet { persistToggle(.launchAtLogin, value: launchAtLogin) }
+    }
+
+    @Published var latinOnlyMode: Bool {
+        didSet { persistToggle(.latinOnlyMode, value: latinOnlyMode) }
+    }
+
+    @Published var enableRefinePass: Bool {
+        didSet { persistToggle(.enableRefinePass, value: enableRefinePass) }
+    }
+
+    @Published var minAcceptConfidence: Float {
+        didSet { persistConfidence(.minAcceptConfidence, value: minAcceptConfidence) }
+    }
+
+    @Published var reconsiderConfidence: Float {
+        didSet { persistConfidence(.reconsiderConfidence, value: reconsiderConfidence) }
+    }
+
+    @Published var trialStartDate: Date? {
+        didSet { persistDate(.trialStartDate, value: trialStartDate) }
+    }
+
+    @Published var isPremium: Bool {
+        didSet { persistToggle(.isPremium, value: isPremium) }
+    }
+
+    @Published var hasShownTrialExpired: Bool {
+        didSet { persistToggle(.hasShownTrialExpired, value: hasShownTrialExpired) }
+    }
+
+    private let userDefaults: UserDefaults
+
+    private init(userDefaults: UserDefaults = UserDefaults(suiteName: "com.example.grabdab") ?? .standard) {
+        self.userDefaults = userDefaults
+        if let hotkeyData = userDefaults.data(forKey: Keys.hotkey.rawValue),
+           let decoded = try? JSONDecoder().decode(HotkeyConfiguration.self, from: hotkeyData) {
+            hotkey = decoded
+        } else {
+            hotkey = .default
+        }
+
+        if let rawValue = userDefaults.string(forKey: Keys.ocrLanguage.rawValue),
+           let language = OCRLanguage(rawValue: rawValue) {
+            ocrLanguage = language
+        } else {
+            ocrLanguage = .english
+        }
+
+        showToast = userDefaults.object(forKey: Keys.showToast.rawValue) as? Bool ?? true
+        launchAtLogin = userDefaults.object(forKey: Keys.launchAtLogin.rawValue) as? Bool ?? false
+        latinOnlyMode = userDefaults.object(forKey: Keys.latinOnlyMode.rawValue) as? Bool ?? false
+        enableRefinePass = userDefaults.object(forKey: Keys.enableRefinePass.rawValue) as? Bool ?? false
+
+        let defaultMinAccept: Float = 0.70
+        let defaultReconsider: Float = 0.60
+
+        if userDefaults.object(forKey: Keys.minAcceptConfidence.rawValue) != nil {
+            let value = userDefaults.float(forKey: Keys.minAcceptConfidence.rawValue)
+            minAcceptConfidence = max(0.1, min(1.0, value))
+        } else {
+            minAcceptConfidence = defaultMinAccept
+        }
+
+        if userDefaults.object(forKey: Keys.reconsiderConfidence.rawValue) != nil {
+            let value = userDefaults.float(forKey: Keys.reconsiderConfidence.rawValue)
+            reconsiderConfidence = max(0.1, min(1.0, value))
+        } else {
+            reconsiderConfidence = defaultReconsider
+        }
+
+        trialStartDate = userDefaults.object(forKey: Keys.trialStartDate.rawValue) as? Date
+        isPremium = userDefaults.bool(forKey: Keys.isPremium.rawValue)
+        hasShownTrialExpired = userDefaults.bool(forKey: Keys.hasShownTrialExpired.rawValue)
+    }
+
+    private func persistHotkey() {
+        guard let data = try? JSONEncoder().encode(hotkey) else { return }
+        userDefaults.set(data, forKey: Keys.hotkey.rawValue)
+    }
+
+    private func persistLanguage() {
+        userDefaults.set(ocrLanguage.rawValue, forKey: Keys.ocrLanguage.rawValue)
+    }
+
+    private func persistToggle(_ key: Keys, value: Bool) {
+        userDefaults.set(value, forKey: key.rawValue)
+    }
+
+    private func persistConfidence(_ key: Keys, value: Float) {
+        let clampedValue = max(0.1, min(1.0, value))
+        userDefaults.set(clampedValue, forKey: key.rawValue)
+    }
+
+    private func persistDate(_ key: Keys, value: Date?) {
+        userDefaults.set(value, forKey: key.rawValue)
+    }
+}
+
+enum OCRLanguage: String, CaseIterable, Identifiable {
+    case english = "en"
+    case chineseSimplified = "zh-Hans"
+    case chineseTraditional = "zh-Hant"
+    case japanese = "ja"
+    case korean = "ko"
+    case spanish = "es"
+    case french = "fr"
+    case german = "de"
+    case italian = "it"
+    case portuguese = "pt"
+    case russian = "ru"
+    case arabic = "ar"
+
+    var id: String { rawValue }
+
+    var displayName: String {
+        switch self {
+        case .english:
+            return "English"
+        case .chineseSimplified:
+            return "Chinese (Simplified)"
+        case .chineseTraditional:
+            return "Chinese (Traditional)"
+        case .japanese:
+            return "Japanese"
+        case .korean:
+            return "Korean"
+        case .spanish:
+            return "Spanish"
+        case .french:
+            return "French"
+        case .german:
+            return "German"
+        case .italian:
+            return "Italian"
+        case .portuguese:
+            return "Portuguese"
+        case .russian:
+            return "Russian"
+        case .arabic:
+            return "Arabic"
+        }
+    }
+
+    var localizedDisplayName: String {
+        switch self {
+        case .english:
+            return localizedString("language.english", comment: "English language name")
+        case .chineseSimplified:
+            return localizedString("language.chineseSimplified", comment: "Chinese Simplified language name")
+        case .chineseTraditional:
+            return localizedString("language.chineseTraditional", comment: "Chinese Traditional language name")
+        case .japanese:
+            return localizedString("language.japanese", comment: "Japanese language name")
+        case .korean:
+            return localizedString("language.korean", comment: "Korean language name")
+        case .spanish:
+            return localizedString("language.spanish", comment: "Spanish language name")
+        case .french:
+            return localizedString("language.french", comment: "French language name")
+        case .german:
+            return localizedString("language.german", comment: "German language name")
+        case .italian:
+            return localizedString("language.italian", comment: "Italian language name")
+        case .portuguese:
+            return localizedString("language.portuguese", comment: "Portuguese language name")
+        case .russian:
+            return localizedString("language.russian", comment: "Russian language name")
+        case .arabic:
+            return localizedString("language.arabic", comment: "Arabic language name")
+        }
+    }
+
+    var visionRecognitionLanguage: String {
+        switch self {
+        case .english:
+            return "en-US"
+        case .chineseSimplified:
+            return "zh-Hans"
+        case .chineseTraditional:
+            return "zh-Hant"
+        case .japanese:
+            return "ja-JP"
+        case .korean:
+            return "ko-KR"
+        case .spanish:
+            return "es-ES"
+        case .french:
+            return "fr-FR"
+        case .german:
+            return "de-DE"
+        case .italian:
+            return "it-IT"
+        case .portuguese:
+            return "pt-BR"
+        case .russian:
+            return "ru-RU"
+        case .arabic:
+            return "ar-SA"
+        }
+    }
+
+    var tesseractLanguageCode: String {
+        switch self {
+        case .english:
+            return "eng"
+        case .chineseSimplified:
+            return "chi_sim"
+        case .chineseTraditional:
+            return "chi_tra"
+        case .japanese:
+            return "jpn"
+        case .korean:
+            return "kor"
+        case .spanish:
+            return "spa"
+        case .french:
+            return "fra"
+        case .german:
+            return "deu"
+        case .italian:
+            return "ita"
+        case .portuguese:
+            return "por"
+        case .russian:
+            return "rus"
+        case .arabic:
+            return "ara"
+        }
+    }
+}
